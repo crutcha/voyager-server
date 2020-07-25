@@ -7,13 +7,15 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('probes', '0002_auto_20200725_2235'),
+        ("probes", "0002_auto_20200725_2235"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='proberesult',
-            name='probe',
-            field=models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to='probes.Prober'),
+            model_name="proberesult",
+            name="probe",
+            field=models.OneToOneField(
+                null=True, on_delete=django.db.models.deletion.SET_NULL, to="probes.Prober"
+            ),
         ),
     ]

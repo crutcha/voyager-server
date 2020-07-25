@@ -6,12 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('probes', '0001_initial'),
+        ("probes", "0001_initial"),
     ]
 
     operations = [
         migrations.AddConstraint(
-            model_name='prober',
-            constraint=models.UniqueConstraint(fields=('user', 'name'), name='only 1 user per prober'),
+            model_name="prober",
+            constraint=models.UniqueConstraint(
+                fields=("user", "name"), name="only 1 user per prober"
+            ),
         ),
     ]

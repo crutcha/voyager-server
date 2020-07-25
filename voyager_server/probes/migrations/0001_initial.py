@@ -16,41 +16,73 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='ProbeResult',
+            name="ProbeResult",
             fields=[
-                ('id', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
-                ('start_time', models.DateTimeField()),
-                ('end_time', models.DateTimeField()),
-                ('target', models.CharField(max_length=64)),
+                (
+                    "id",
+                    models.UUIDField(
+                        default=uuid.uuid4, editable=False, primary_key=True, serialize=False
+                    ),
+                ),
+                ("start_time", models.DateTimeField()),
+                ("end_time", models.DateTimeField()),
+                ("target", models.CharField(max_length=64)),
             ],
         ),
         migrations.CreateModel(
-            name='ProbeTarget',
+            name="ProbeTarget",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('destination', models.CharField(max_length=64)),
-                ('interval', models.PositiveIntegerField()),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("destination", models.CharField(max_length=64)),
+                ("interval", models.PositiveIntegerField()),
             ],
         ),
         migrations.CreateModel(
-            name='Prober',
+            name="Prober",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=64)),
-                ('targets', models.ManyToManyField(to='probes.ProbeTarget')),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("name", models.CharField(max_length=64)),
+                ("targets", models.ManyToManyField(to="probes.ProbeTarget")),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='ProbeHop',
+            name="ProbeHop",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('ip', models.CharField(max_length=64, null=True)),
-                ('dns_name', models.CharField(max_length=128, null=True)),
-                ('response_time', models.PositiveIntegerField()),
-                ('ttl', models.PositiveIntegerField()),
-                ('responded', models.BooleanField()),
-                ('result', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='hops', to='probes.ProbeResult')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+                    ),
+                ),
+                ("ip", models.CharField(max_length=64, null=True)),
+                ("dns_name", models.CharField(max_length=128, null=True)),
+                ("response_time", models.PositiveIntegerField()),
+                ("ttl", models.PositiveIntegerField()),
+                ("responded", models.BooleanField()),
+                (
+                    "result",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="hops",
+                        to="probes.ProbeResult",
+                    ),
+                ),
             ],
         ),
     ]

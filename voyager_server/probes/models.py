@@ -3,12 +3,14 @@ from django.contrib.auth.models import User
 from django.conf import settings
 import uuid
 
+
 class ProbeTarget(models.Model):
     destination = models.CharField(max_length=64)
     interval = models.PositiveIntegerField()
 
     def __str__(self):
         return self.destination
+
 
 class Prober(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -17,11 +19,12 @@ class Prober(models.Model):
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=['user', 'name'], name='only 1 user per prober')
+            models.UniqueConstraint(fields=["user", "name"], name="only 1 user per prober")
         ]
 
     def __str__(self):
         return self.name
+
 
 class ProbeResult(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -38,4 +41,3 @@ class ProbeHop(models.Model):
     ttl = models.PositiveIntegerField()
     responded = models.BooleanField()
     result = models.ForeignKey(ProbeResult, on_delete=models.CASCADE, related_name="hops")
-

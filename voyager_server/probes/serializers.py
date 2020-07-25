@@ -1,10 +1,12 @@
 from rest_framework import serializers
 from .models import ProbeTarget, ProbeResult, ProbeHop, Prober
 
+
 class ProberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Prober
         fields = "__all__"
+
 
 class ProbeTargetSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,6 +19,7 @@ class ProbeHopSerializer(serializers.ModelSerializer):
         model = ProbeHop
         fields = ["ip", "dns_name", "responded", "response_time", "ttl"]
 
+
 class ProbeResultSerializer(serializers.ModelSerializer):
     hops = ProbeHopSerializer(many=True)
     probe = serializers.SerializerMethodField()
@@ -27,7 +30,7 @@ class ProbeResultSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         try:
-            probe = Prober.objects.get(user=self.context['request'].user)
+            probe = Prober.objects.get(user=self.context["request"].user)
         except Prober.DoesNotExist:
             raise serializers.ValidationError("unable to determine probe agent")
 
