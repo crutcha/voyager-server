@@ -14,6 +14,7 @@ class ProbeTargetViewSet(viewsets.ModelViewSet):
 
 
 class ProbeResultViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = ProbeResult.objects.all()
     serializer_class = serializers.ProbeResultSerializer
 
