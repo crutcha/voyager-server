@@ -12,10 +12,12 @@ jobs:
       matrix:
         python-version: [3.7, 3.8]
     env:
-      DATABASE_URL: "postgres://postgres:SuperSecretPassword@postgres:5432/voyager"
+      DATABASE_URL: "postgres://postgres:SuperSecretPassword@localhost:5432/voyager"
     services:
       postgres:
         image: postgres
+        ports:
+          - 5432:5432 
         env:
           POSTGRES_PASSWORD: SuperSecretPassword
         options: >-
