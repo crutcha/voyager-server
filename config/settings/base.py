@@ -265,7 +265,7 @@ CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "sqs://")
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
 # TODO: django celery results instead
 CELERY_RESULT_BACKEND = None
-#CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+# CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
 CELERY_ACCEPT_CONTENT = ["json"]
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-task_serializer

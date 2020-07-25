@@ -1,9 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 class ProbeTarget(models.Model):
     destination = models.CharField(max_length=64)
     interval = models.PositiveIntegerField()
+
+    def __str__(self):
+        return self.destination
 
 
 class ProbeResult(models.Model):
@@ -21,3 +26,12 @@ class ProbeHop(models.Model):
     result = models.ForeignKey(
         ProbeResult, on_delete=models.CASCADE, related_name="hops"
     )
+
+
+class Prober(models.Model):
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64)
+    targets = models.ManyToManyField(ProbeTarget)
+
+    def __str__(self):
+        return self.name
