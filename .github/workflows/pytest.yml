@@ -11,7 +11,18 @@ jobs:
     strategy:
       matrix:
         python-version: [3.7, 3.8]
-
+    env:
+      DATABASE_URL: "postgres://postgres:SuperSecretPassword@postgres:5432/voyager"
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: SuperSecretPassword
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -25,7 +36,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install black pytest
         pip install -r requirements/local.txt
-    - name: Lint with flake8
+    - name: Lint check 
       run: black -l 100 ./
     - name: Test with pytest
       run: pytest
