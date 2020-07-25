@@ -39,6 +39,6 @@ jobs:
         pip install black pytest
         pip install -r requirements/local.txt
     - name: Lint check 
-      run: black -l 100 ./
+      run: black -l 100 ./ --check
     - name: Test with pytest
       run: pytest

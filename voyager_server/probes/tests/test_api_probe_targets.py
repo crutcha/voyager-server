@@ -41,4 +41,3 @@ class TestProbeTargetsViewSet:
         probe_3_response = view(request)
 
         assert len(probe_3_response.data) == 0
-
