@@ -44,15 +44,11 @@ CSRF_COOKIE_SECURE = True
 # TODO: set this to 60 seconds first and then to 518400 once you prove the former works
 SECURE_HSTS_SECONDS = 60
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-include-subdomains
-SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool(
-    "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True
-)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = env.bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS", default=True)
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-preload
 SECURE_HSTS_PRELOAD = env.bool("DJANGO_SECURE_HSTS_PRELOAD", default=True)
 # https://docs.djangoproject.com/en/dev/ref/middleware/#x-content-type-options-nosniff
-SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
-    "DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True
-)
+SECURE_CONTENT_TYPE_NOSNIFF = env.bool("DJANGO_SECURE_CONTENT_TYPE_NOSNIFF", default=True)
 
 # STORAGES
 # ------------------------------------------------------------------------------
@@ -147,8 +143,7 @@ LOGGING = {
     "filters": {"require_debug_false": {"()": "django.utils.log.RequireDebugFalse"}},
     "formatters": {
         "verbose": {
-            "format": "%(levelname)s %(asctime)s %(module)s "
-            "%(process)d %(thread)d %(message)s"
+            "format": "%(levelname)s %(asctime)s %(module)s " "%(process)d %(thread)d %(message)s"
         }
     },
     "handlers": {
@@ -157,19 +152,11 @@ LOGGING = {
             "filters": ["require_debug_false"],
             "class": "django.utils.log.AdminEmailHandler",
         },
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "verbose",
-        },
+        "console": {"level": "DEBUG", "class": "logging.StreamHandler", "formatter": "verbose",},
     },
     "root": {"level": "INFO", "handlers": ["console"]},
     "loggers": {
-        "django.request": {
-            "handlers": ["mail_admins"],
-            "level": "ERROR",
-            "propagate": True,
-        },
+        "django.request": {"handlers": ["mail_admins"], "level": "ERROR", "propagate": True,},
         "django.security.DisallowedHost": {
             "level": "ERROR",
             "handlers": ["console", "mail_admins"],

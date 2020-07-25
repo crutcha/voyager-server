@@ -14,10 +14,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name="ProbeResult",
             fields=[
-                (
-                    "uuid",
-                    models.CharField(max_length=36, primary_key=True, serialize=False),
-                ),
+                ("uuid", models.CharField(max_length=36, primary_key=True, serialize=False),),
                 ("start_time", models.DateTimeField()),
                 ("end_time", models.DateTimeField()),
                 ("target", models.CharField(max_length=64)),
@@ -29,10 +26,7 @@ class Migration(migrations.Migration):
                 (
                     "id",
                     models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID",
                     ),
                 ),
                 ("destination", models.CharField(max_length=64)),
@@ -45,10 +39,7 @@ class Migration(migrations.Migration):
                 (
                     "id",
                     models.AutoField(
-                        auto_created=True,
-                        primary_key=True,
-                        serialize=False,
-                        verbose_name="ID",
+                        auto_created=True, primary_key=True, serialize=False, verbose_name="ID",
                     ),
                 ),
                 ("hop", models.CharField(max_length=64)),
@@ -58,8 +49,7 @@ class Migration(migrations.Migration):
                 (
                     "result",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE,
-                        to="probes.ProbeResult",
+                        on_delete=django.db.models.deletion.CASCADE, to="probes.ProbeResult",
                     ),
                 ),
             ],

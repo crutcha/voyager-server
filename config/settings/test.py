@@ -9,8 +9,7 @@ from .base import env
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 SECRET_KEY = env(
-    "DJANGO_SECRET_KEY",
-    default="XCyTDssjbrhyUQmDNKjtSDxpwNvUxNtZX49Dys5C41ji1eJuLgf7754HOfuBayKS",
+    "DJANGO_SECRET_KEY", default="XCyTDssjbrhyUQmDNKjtSDxpwNvUxNtZX49Dys5C41ji1eJuLgf7754HOfuBayKS",
 )
 # https://docs.djangoproject.com/en/dev/ref/settings/#test-runner
 TEST_RUNNER = "django.test.runner.DiscoverRunner"
@@ -18,12 +17,7 @@ TEST_RUNNER = "django.test.runner.DiscoverRunner"
 # CACHES
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#caches
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-        "LOCATION": "",
-    }
-}
+CACHES = {"default": {"BACKEND": "django.core.cache.backends.locmem.LocMemCache", "LOCATION": "",}}
 
 # PASSWORDS
 # ------------------------------------------------------------------------------

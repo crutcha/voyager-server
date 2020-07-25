@@ -4,8 +4,9 @@ from voyager_server.probes import models
 
 @admin.register(models.ProbeTarget)
 class ProbeTargetAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["destination", "interval"]
+
 
 @admin.register(models.Prober)
 class ProberAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["name", "user"]

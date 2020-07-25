@@ -23,9 +23,7 @@ class ProbeHop(models.Model):
     response_time = models.PositiveIntegerField()
     ttl = models.PositiveIntegerField()
     responded = models.BooleanField()
-    result = models.ForeignKey(
-        ProbeResult, on_delete=models.CASCADE, related_name="hops"
-    )
+    result = models.ForeignKey(ProbeResult, on_delete=models.CASCADE, related_name="hops")
 
 
 class Prober(models.Model):
