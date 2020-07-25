@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from probes.models import ProbeTarget, ProbeResult, ProbeHop
-from probes import serializers
+from voyager_server.probes.models import ProbeTarget, ProbeResult, ProbeHop
+from voyager_server.probes import serializers
 
 
 class ProbeTargetViewSet(viewsets.ModelViewSet):
