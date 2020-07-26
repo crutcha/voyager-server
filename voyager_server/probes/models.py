@@ -7,7 +7,7 @@ import uuid
 class ProbeTarget(models.Model):
     destination = models.CharField(max_length=64)
     interval = models.PositiveIntegerField()
-    probe_interval = models.PositiveIntegerField(default=10)
+    probe_count = models.PositiveIntegerField(default=10)
 
     def __str__(self):
         return self.destination
