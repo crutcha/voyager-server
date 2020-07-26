@@ -6,13 +6,11 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('probes', '0004_probetarget_probe_interval'),
+        ("probes", "0004_probetarget_probe_interval"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='probetarget',
-            old_name='probe_interval',
-            new_name='probe_count',
+            model_name="probetarget", old_name="probe_interval", new_name="probe_count",
         ),
     ]

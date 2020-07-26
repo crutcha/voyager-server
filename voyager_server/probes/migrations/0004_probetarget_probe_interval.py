@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('probes', '0003_proberesult_probe'),
+        ("probes", "0003_proberesult_probe"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='probetarget',
-            name='probe_interval',
+            model_name="probetarget",
+            name="probe_interval",
             field=models.PositiveIntegerField(default=10),
         ),
     ]
