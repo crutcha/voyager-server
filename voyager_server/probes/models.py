@@ -29,7 +29,7 @@ class Prober(models.Model):
 
 class ProbeResult(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    probe = models.OneToOneField(Prober, on_delete=models.SET_NULL, null=True)
+    probe = models.ForeignKey(Prober, on_delete=models.SET_NULL, null=True)
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
     target = models.CharField(max_length=64)
