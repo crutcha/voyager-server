@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from voyager_server.probes.models import ProbeTarget, ProbeResult, ProbeHop
-from voyager_server.probes import serializers
+from voyager_server.probes.api import serializers
 from rest_framework.permissions import IsAuthenticated
 
 

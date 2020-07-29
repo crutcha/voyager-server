@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ProbeTarget, ProbeResult, ProbeHop, Prober
+from voyager_server.probes.models import ProbeTarget, ProbeResult, ProbeHop, Prober
 
 
 class ProberSerializer(serializers.ModelSerializer):

@@ -74,6 +74,8 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "django_extensions",
+    "django_celery_results",
+    "netfields",
 ]
 
 LOCAL_APPS = [
@@ -253,9 +255,11 @@ if USE_TZ:
     CELERY_TIMEZONE = TIME_ZONE
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_url
 CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "sqs://")
+# Default to us-east-2
+CELERY_BROKER_TRANSPORT_OPTIONS = {"region": os.environ.get("SQS_REGION", "us-east-2")}
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
 # TODO: django celery results instead
-CELERY_RESULT_BACKEND = None
+CELERY_RESULT_BACKEND = "django-db"
 # CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
 CELERY_ACCEPT_CONTENT = ["json"]
@@ -268,7 +272,7 @@ CELERY_RESULT_SERIALIZER = "json"
 CELERY_TASK_TIME_LIMIT = 5 * 60
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#task-soft-time-limit
 # TODO: set to whatever value is adequate in your circumstances
-CELERY_TASK_SOFT_TIME_LIMIT = 60
+CELERY_TASK_SOFT_TIME_LIMIT = 300
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#beat-scheduler
 CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 # django-allauth
