@@ -21,12 +21,11 @@ class PrefixInfo(models.Model):
     def __str__(self):
         return str(self.prefix)
 
-
 class ProbeTarget(models.Model):
     TARGET_TYPES = (
-        (1, "ICMP"),
-        (2, "UDP"),
-        (3, "TCP"),
+        (1, "icmp"),
+        (2, "udp"),
+        (3, "tcp"),
     )
     destination = models.CharField(max_length=64, unique=True)
     interval = models.PositiveIntegerField()
@@ -36,6 +35,8 @@ class ProbeTarget(models.Model):
     def __str__(self):
         return self.destination
 
+    def type_choice(self):
+        return self.TARGET_TYPES[self.type-1][0]
 
 class Prober(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
