@@ -11,7 +11,7 @@ class ProberSerializer(serializers.ModelSerializer):
 class ProbeTargetSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProbeTarget
-        fields = ["destination", "interval", "probe_count"]
+        fields = ["destination", "interval", "probe_count", "type"]
 
 
 class ProbeHopSerializer(serializers.ModelSerializer):

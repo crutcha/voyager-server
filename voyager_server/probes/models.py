@@ -23,9 +23,15 @@ class PrefixInfo(models.Model):
 
 
 class ProbeTarget(models.Model):
+    TARGET_TYPES = (
+        (1, "ICMP"),
+        (2, "UDP"),
+        (3, "TCP"),
+    )
     destination = models.CharField(max_length=64, unique=True)
     interval = models.PositiveIntegerField()
     probe_count = models.PositiveIntegerField(default=10)
+    type = models.PositiveSmallIntegerField(choices=TARGET_TYPES, default=2)
 
     def __str__(self):
         return self.destination

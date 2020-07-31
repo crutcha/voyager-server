@@ -15,7 +15,7 @@ urlpatterns = [
     path("users/", include("voyager_server.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    path("api/v1/probes/", include("voyager_server.probes.api.urls")),
+    path("probes/", include("probes.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
