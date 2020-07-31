@@ -18,6 +18,7 @@ def seed(apps, schema_editor):
     prober = Prober.objects.create(user=test_probe_user)
     target1 = ProbeTarget.objects.create(destination="8.8.8.8", interval=30, probe_count=10)
     target2 = ProbeTarget.objects.create(destination="1.1.1.1", interval=30, probe_count=10)
+    target3 = ProbeTarget.objects.create(destination="cnn.com", interval=30, probe_count=10, type=3, port=443)
     prober.targets.add(target1)
     prober.targets.add(target2)
 
@@ -60,6 +61,7 @@ class Migration(migrations.Migration):
                 ('destination', models.CharField(max_length=64, unique=True)),
                 ('interval', models.PositiveIntegerField()),
                 ('probe_count', models.PositiveIntegerField(default=10)),
+                ('port', models.PositiveIntegerField(blank=True, null=True)),
                 ('type', models.PositiveSmallIntegerField(choices=[(1, 'ICMP'), (2, 'UDP'), (3, 'TCP')], default=2)),
             ],
         ),

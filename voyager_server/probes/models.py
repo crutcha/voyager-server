@@ -30,6 +30,7 @@ class ProbeTarget(models.Model):
     destination = models.CharField(max_length=64, unique=True)
     interval = models.PositiveIntegerField()
     probe_count = models.PositiveIntegerField(default=10)
+    port = models.PositiveIntegerField(blank=True, null=True)
     type = models.PositiveSmallIntegerField(choices=TARGET_TYPES, default=2)
 
     def __str__(self):
