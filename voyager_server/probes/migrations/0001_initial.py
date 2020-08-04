@@ -15,7 +15,7 @@ def seed(apps, schema_editor):
     test_probe_user = User.objects.create_user(
         username="test-probe", is_staff=True, is_superuser=True, password="ChangeMe"
     )
-    prober = Prober.objects.create(user=test_probe_user)
+    prober = Prober.objects.create(user=test_probe_user, name="test-probe")
     target1 = ProbeTarget.objects.create(destination="8.8.8.8", interval=30, probe_count=10)
     target2 = ProbeTarget.objects.create(destination="1.1.1.1", interval=30, probe_count=10)
     target3 = ProbeTarget.objects.create(destination="cnn.com", interval=30, probe_count=10, type=3, port=443)
