@@ -34,7 +34,9 @@ class ProbeResultViewSet(viewsets.ModelViewSet):
         for hop in filtered_results:
             if not hop.ip:
                 hop.ip = ""
-            data["nodes"].append({"id": hop.id, "label": hop.dns_name})
+                hop.dns_name = "*"
+            label = hop.dns_name if hop.dns_name else hop.ip
+            data["nodes"].append({"id": hop.id, "label": label, "asn": 65000, "ttl": hop.ttl, "rtt": hop.response_time})
             if len(hop_map) <= hop.ttl - 1:
                 hop_map.append({hop.ip: hop.id})
             else:
